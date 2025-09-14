@@ -10,13 +10,18 @@ const io = new Server(server, {
   path: "/socket"
 });
 
+// Default route para makitang buhay ang server
+app.get("/", (req, res) => {
+  res.send("✅ Mining WebSocket server is running!");
+});
+
 io.on("connection", (socket) => {
   console.log("✅ Client connected:", socket.id);
 
+  // test job send
   socket.emit("job", {
     identifier: "job",
     job_id: "test-job",
-    // fake data lang
     blob: "0000abcd",
     target: "ffff0"
   });
@@ -30,6 +35,8 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log("🚀 Listening on ws://testmining1.onrender.com/socket");
+// Render gives us PORT (process.env.PORT)
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`🚀 Listening on port ${PORT}`);
 });
