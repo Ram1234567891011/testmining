@@ -7,7 +7,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: { origin: "*" },
- // path: "/socket"
+  path: "/socket"
 });
 
 // Default route para makitang buhay ang server
