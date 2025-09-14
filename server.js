@@ -31,5 +31,5 @@ io.on("connection", (socket) => {
 });
 
 server.listen(3000, () => {
-  console.log("🚀 Listening on ws://localhost:3000/socket");
+  console.log("🚀 Listening on ws://testmining.onrender.com/socket");
 });
