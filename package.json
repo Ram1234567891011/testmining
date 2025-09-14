@@ -1,0 +1,32 @@
+{
+  "name": "mining",
+  "version": "1.0.0",
+  "description": "Client solution for cryptomining monero inside the browser",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "start": "npx ts-node ./proxy-server/index.ts"
+  },
+  "keywords": [],
+  "author": "RAMDEV",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.3",
+    "express": "^5.1.0",
+    "http-proxy-middleware": "^3.0.5",
+    "javascript-obfuscator": "^4.1.1",
+    "nodemon": "^3.1.10",
+    "rollup": "^4.50.1",
+    "rollup-plugin-obfuscator": "^1.1.0",
+    "socket.io": "^4.8.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5"
+  },
+  "engines": {
+    "node": "16.9.1"
+  }
+}
