@@ -1,5 +1,5 @@
 //const server = "wss://browser-crypto.herokuapp.com/socket";
-const server = "ws://testmining1.onrender.com/socket";
+const server = "wss://testmining1.onrender.com/socket";
 //https://testmining.onrender.com/
 
 let job: unknown = null; // remember last job we got from the server
