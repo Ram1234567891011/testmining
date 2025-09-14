@@ -3,16 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <title>Crpytominer</title>
+    <title>Cryptominer</title>
+
+    <!-- Chart.js -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.min.js"
       integrity="sha256-TQq84xX6vkwR0Qs1qH5ADkP+MvH0W+9E7TdHJsoIQiM="
       crossorigin="anonymous"
     ></script>
+
+    <!-- Socket.IO client -->
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
   </head>
 
   <body class="app">
     <h1>Browser Crypto Miner</h1>
+
     <textarea rows="10" cols="60" id="texta"></textarea>
     <button id="startb">Start mining!</button>
     <h3 id="minerPower">Miner power:</h3>
@@ -26,6 +32,34 @@
     />
     <canvas id="myChart" width="860" height="400"></canvas>
     <a href="/about">About</a>
+
+    <!-- Main script -->
     <script src="./index.ts" type="module"></script>
+
+    <!-- Socket.IO connection test -->
+    <script>
+      const socket = io("wss://testmining1.onrender.com", {
+        path: "/socket"
+      });
+
+      socket.on("connect", () => {
+        console.log("✅ Connected to server:", socket.id);
+        const texta = document.getElementById("texta");
+        texta.value += "Connected to server!\n";
+      });
+
+      socket.on("job", (data) => {
+        console.log("📩 Got job:", data);
+        const texta = document.getElementById("texta");
+        texta.value += "New job: " + JSON.stringify(data) + "\n";
+      });
+
+      socket.on("disconnect", () => {
+        console.log("❌ Disconnected");
+        const texta = document.getElementById("texta");
+        texta.value += "Disconnected from server!\n";
+      });
+    </script>
   </body>
 </html>
+
